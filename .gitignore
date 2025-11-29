@@ -1,0 +1,34 @@
+bin/
+build/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+# Go modules
+vendor/
+
+# Go workspace
+go.work
+go.work.sum
+
+# Cache
+*.prof
+*.pprof
+*.log
+
+raylib/
+raylib-go/raylib/lib*
+*.a
+*.o
+
+# Raylib temporary files (shaders, models)
+*.cache
+*.glsl.h
+
+*.swp
+
+raylib_log.txt
