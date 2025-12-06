@@ -1,34 +1,31 @@
-bin/
-build/
-dist/
-*.exe
-*.exe~
-*.dll
+# Compiled object files
+*.o
 *.so
-*.dylib
-*.test
+*.a
 *.out
-# Go modules
-vendor/
+*.exe
 
-# Go workspace
-go.work
-go.work.sum
+# Dependency files
+*.d
 
-# Cache
-*.prof
-*.pprof
+# Temporary files
+*~
+*.swp
+*.swo
+
+# CMake build directories
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDE/editor files
+.idea/
+*.code-workspace
+
+# Logs
 *.log
 
-raylib/
-raylib-go/raylib/lib*
-*.a
-*.o
-
-# Raylib temporary files (shaders, models)
-*.cache
-*.glsl.h
-
-*.swp
-
-raylib_log.txt
+# Backup files
+*.bak
