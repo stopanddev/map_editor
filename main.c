@@ -1,7 +1,6 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_mouse.h>
-#include <SDL3/SDL_oldnames.h>
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
 #include <stdio.h>
@@ -11,6 +10,7 @@
 #include "system_utils/system_utils.h"
 #include <SDL3/SDL_main.h>
 
+SDL_Joystick *joystick = NULL;
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
   AppState *state = SDL_calloc(1, sizeof(AppState));
   if (!state) {
@@ -32,7 +32,7 @@ SDL_AppResult SDL_AppIterate(void *appstate) {
 
   Uint32 mbutton = SDL_GetMouseState(&mouseX, &mouseY);
   SDL_FPoint mousePoint = {mouseX, mouseY};
-  HandleMouseClick(as->renderer, as, mousePoint, mbutton);
+  HandleMouseClick(as, mousePoint, mbutton);
   as->prevMouseButton = mbutton;
   // run game logic if we're at or past the time to run it.
   // if we're _really_ behind the time to run it, run it

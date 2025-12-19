@@ -2,7 +2,6 @@
 #define init_h
 
 #include <SDL3/SDL_mouse.h>
-#include <SDL3/SDL_oldnames.h>
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
 #include <math.h>
@@ -10,17 +9,17 @@
 #include <SDL3/SDL.h>
 #include <stdio.h>
 
-#define BLOCK_SIZE_IN_PIXELS 16
 #define STEP_RATE_MILLISECONDS 60
-#define GAME_WIDTH 84
-#define GAME_HEIGHT 76
-#define SDL_WINDOW_WIDTH (BLOCK_SIZE_IN_PIXELS * GAME_WIDTH)
-#define SDL_WINDOW_HEIGHT (BLOCK_SIZE_IN_PIXELS * GAME_HEIGHT)
-#define CELL_SIZE (BLOCK_SIZE_IN_PIXELS + 1)
-#define COLS ((SDL_WINDOW_WIDTH - 1) / CELL_SIZE)
-#define ROWS ((SDL_WINDOW_HEIGHT - 1) / CELL_SIZE)
-
-static SDL_Joystick *joystick = NULL;
+#define GAME_WIDTH 1024
+#define GAME_HEIGHT 768
+#define TILE_PIXEL 32
+#define MENU_WIDTH 160
+#define GAP 1.0f
+// (1024 - 160) / 33
+#define MAP_WIDTH 25
+#define MAP_HEIGHT 21
+#define WINDOW_WIDTH 1024
+#define WINDOW_HEIGHT 768
 
 typedef struct {
   int textureId;
@@ -31,7 +30,7 @@ typedef struct {
   SDL_Window *window;
   SDL_Renderer *renderer;
   Uint64 last_step;
-  Tile grid[ROWS][COLS];
+  Tile grid[MAP_WIDTH][MAP_HEIGHT];
   SDL_Cursor *cursor;
   Uint32 prevMouseButton;
 } AppState;

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(MySDL3App C)
-
+set(CMAKE_C_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
 find_package(SDL3 REQUIRED)
 
 add_executable(myapp 

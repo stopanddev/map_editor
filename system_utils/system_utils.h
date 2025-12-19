@@ -6,6 +6,13 @@
 void LoadMap(AppState *appstate);
 void SaveMap(AppState *appstate);
 
-void HandleMouseClick(SDL_Renderer *renderer, AppState *appstate,
-                      SDL_FPoint mousePoint, Uint32 mbutton);
+void HandleMouseClick(AppState *appstate, SDL_FPoint mousePoint,
+                      Uint32 mbutton);
+static inline float SnapX(float logicalX, float scaleX) {
+  return floorf(logicalX * scaleX) / scaleX;
+}
+
+static inline float SnapY(float logicalY, float scaleY) {
+  return floorf(logicalY * scaleY) / scaleY;
+}
 #endif
