@@ -2,7 +2,15 @@
 #define grid_utils_h
 #include "../configs/init.h"
 #include "../system_utils/system_utils.h"
+#include <SDL3/SDL_init.h>
+#include <SDL3/SDL_keycode.h>
 #include <stdio.h>
-void DrawGrid(SDL_Renderer *renderer, AppState *appstate);
+
+#define XGRID_OFFSET 0
+#define YGRID_OFFSET 0
+
+void init_camera(Camera *camera, int width, int height);
+void draw_grid(SDL_Renderer *renderer, AppState *appstate);
+void handle_camera_input(AppState *appstate, SDL_Keycode key);
 
 #endif

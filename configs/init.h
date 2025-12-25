@@ -9,7 +9,7 @@
 #include <SDL3/SDL.h>
 #include <stdio.h>
 
-#define STEP_RATE_MILLISECONDS 60
+#define STEP_RATE_MILLISECONDS 10
 #define GAME_WIDTH 1024
 #define GAME_HEIGHT 768
 #define TILE_PIXEL 32
@@ -17,7 +17,7 @@
 #define GAP 1.0f
 // (1024 - 160) / 33
 #define MAP_WIDTH 25
-#define MAP_HEIGHT 21
+#define MAP_HEIGHT 22
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
 
@@ -26,6 +26,15 @@ typedef struct {
   int collidable;
 } Tile;
 
+typedef struct Camera {
+  int x, y;
+  int width, height;
+} Camera;
+
+typedef struct MotionCursor {
+  int x, y;
+} MotionCursor;
+
 typedef struct {
   SDL_Window *window;
   SDL_Renderer *renderer;
@@ -33,6 +42,8 @@ typedef struct {
   Tile grid[MAP_WIDTH][MAP_HEIGHT];
   SDL_Cursor *cursor;
   Uint32 prevMouseButton;
+  Camera camera;
+  MotionCursor motionCursor;
 } AppState;
 
 SDL_AppResult Init(AppState *state, int argc, char *argv[]);
