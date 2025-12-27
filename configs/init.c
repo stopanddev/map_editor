@@ -30,6 +30,5 @@ SDL_AppResult Init(AppState *state, int argc, char *argv[]) {
       state->grid[r][c].collidable = 0;
     }
   }
-
   return SDL_APP_CONTINUE;
 }

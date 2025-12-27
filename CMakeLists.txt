@@ -12,6 +12,7 @@ add_executable(myapp
     left_menu/left_menu.c
     controls/controls.c
     motion_utils/motion_utils.c
+    tile_map_utils/tile_map_utils.c
 )
 
 target_link_libraries(myapp PRIVATE SDL3::SDL3 m)

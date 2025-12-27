@@ -1,0 +1,4 @@
+Make View Port for left hand panel.
+Render the tile set in true 32x32 for tile selection.
+Need to figure out how to do that to a render target square. 
+I think there's something for this, maybe streaming?

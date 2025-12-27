@@ -13,17 +13,19 @@ void init_camera(Camera *camera, int width, int height) {
 // Handle input for the camera (scrolling)
 void handle_camera_input(AppState *appstate, SDL_Keycode key) {
   SDL_Keymod modState = SDL_GetModState();
-  if (modState & SDL_KMOD_CTRL && key == SDLK_LEFT) {
-    appstate->camera.x -= TILE_PIXEL;
-  }
-  if (modState & SDL_KMOD_CTRL && key == SDLK_RIGHT) {
-    appstate->camera.x += TILE_PIXEL;
-  }
-  if (modState & SDL_KMOD_CTRL && key == SDLK_UP) {
-    appstate->camera.y -= TILE_PIXEL;
-  }
-  if (modState & SDL_KMOD_CTRL && key == SDLK_DOWN) {
-    appstate->camera.y += TILE_PIXEL;
+  if (!appstate->motionCursor.mode) {
+    if (modState & SDL_KMOD_CTRL && key == SDLK_LEFT) {
+      appstate->camera.x -= TILE_PIXEL;
+    }
+    if (modState & SDL_KMOD_CTRL && key == SDLK_RIGHT) {
+      appstate->camera.x += TILE_PIXEL;
+    }
+    if (modState & SDL_KMOD_CTRL && key == SDLK_UP) {
+      appstate->camera.y -= TILE_PIXEL;
+    }
+    if (modState & SDL_KMOD_CTRL && key == SDLK_DOWN) {
+      appstate->camera.y += TILE_PIXEL;
+    }
   }
 }
 
