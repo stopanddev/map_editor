@@ -5,6 +5,7 @@
 *.out
 *.exe
 *.png
+*.txt
 
 # Dependency files
 *.d
