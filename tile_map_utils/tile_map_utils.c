@@ -27,13 +27,11 @@ SDL_AppResult Tile_map_texture_init(AppState *appstate) {
   return SDL_APP_CONTINUE;
   SDL_DestroySurface(surface);
 }
-
+// Render left side panels
 void Render_panel_tiles(AppState *appstate) {
   AppState *as = (AppState *)appstate;
   float twidth, theight;
   SDL_GetTextureSize(as->tileMapTexture.texture, &twidth, &theight);
-  int tcolumns = (int)(twidth / 32);
-  int trows = (int)(theight / 32);
   int camxmod = as->cameraPanel.x;
   int camymod = as->cameraPanel.y;
   for (int x = 0; x < MENU_COLUMNS; x++) {

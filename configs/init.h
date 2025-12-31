@@ -15,36 +15,41 @@
 #define MENU_WIDTH 224
 #define MENU_COLUMNS 7
 #define GAP 1.0f
-// (1024 - 160) / 33
 #define MAP_WIDTH 25
-#define MAP_HEIGHT 22
+#define MAP_HEIGHT 23
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
-
-typedef struct {
-  int textureId;
-  int collidable;
-} Tile;
 
 typedef struct Camera {
   int x, y;
   int width, height;
 } Camera;
 
+typedef struct {
+  int buffX, buffY;
+  bool validTexture;
+} TileBuffer;
+
+typedef struct {
+  TileBuffer textureLoc;
+  int collidable;
+} Tile;
+
 typedef struct MotionCursor {
   int x, y, gridx, gridy, panelx, panely;
   bool mode;
+  TileBuffer tileBuffer;
 } MotionCursor;
 
 typedef struct MotionState {
+  bool modified;
   bool ctrl_w;
+  bool yank;
 } MotionState;
 
 typedef struct TileMapTexture {
   int texture_width, texture_height;
   SDL_Texture *texture;
-  // SDL_FRect destSquare;
-  // SDL_FRect sourceSquare;
 } TileMapTexture;
 
 typedef struct {
@@ -62,5 +67,5 @@ typedef struct {
 } AppState;
 
 SDL_AppResult Init(AppState *state, int argc, char *argv[]);
-
+void Init_motion_state(AppState *appstate);
 #endif

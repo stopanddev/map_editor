@@ -16,12 +16,13 @@
 #include <SDL3/SDL_main.h>
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
+  freopen("log.txt", "w", stdout);
   AppState *state = SDL_calloc(1, sizeof(AppState));
   if (!state) {
     return SDL_APP_FAILURE;
   }
-  init_camera(&state->camera, GAME_WIDTH - MENU_WIDTH, GAME_HEIGHT);
-  init_motion_cursor(&state->motionCursor);
+  Init_camera(&state->camera, GAME_WIDTH - MENU_WIDTH, GAME_HEIGHT);
+  Init_motion_cursor(&state->motionCursor);
   *appstate = state;
   if (Init(state, argc, argv) != SDL_APP_CONTINUE) {
     return SDL_APP_FAILURE;
@@ -51,18 +52,18 @@ SDL_AppResult SDL_AppIterate(void *appstate) {
   SDL_SetRenderDrawColor(as->renderer, 0, 0, 0, 255);
   SDL_RenderClear(as->renderer);
 
-  draw_grid(as->renderer, as);
-  draw_back_panel(as->renderer, as);
+  Draw_grid(as->renderer, as);
+  Draw_back_panel(as->renderer, as);
 
   Render_panel_tiles(appstate);
-  draw_motion_mode_handler(as->renderer, as);
+  Draw_motion_mode_handler(as->renderer, as);
   SDL_RenderPresent(as->renderer);
   return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event) {
   AppState *as = (AppState *)appstate;
-  SDL_AppResult res = handle_input(event, appstate);
+  SDL_AppResult res = Handle_input(event, appstate);
   return res;
 }
 

@@ -1,14 +1,14 @@
 #include "left_menu.h"
 #include <SDL3/SDL_stdinc.h>
 
-void draw_back_panel(SDL_Renderer *renderer, AppState *appstate) {
+void Draw_back_panel(SDL_Renderer *renderer, AppState *appstate) {
   SDL_SetRenderDrawColor(renderer, 0, 100, 0, 255);
   SDL_FRect square = {0, 0, MENU_WIDTH, 768};
 
   SDL_RenderFillRect(renderer, &square);
 }
 
-void handle_left_panel_camera_input(AppState *appstate, SDL_Keycode key) {
+void Handle_left_panel_camera_input(AppState *appstate, SDL_Keycode key) {
   SDL_Keymod modState = SDL_GetModState();
 
   if (appstate->motionCursor.mode) {

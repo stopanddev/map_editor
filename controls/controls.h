@@ -8,8 +8,11 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_keycode.h>
 #include <stdio.h>
-SDL_AppResult handle_input(SDL_Event *event, AppState *appstate);
-void motion_set_state(SDL_Keycode key, SDL_Keymod modState, AppState *appstate);
-void motion_event_handler(SDL_Keycode key, AppState *appstate);
-void reset_motion_state(AppState *appsate);
+SDL_AppResult Handle_input(SDL_Event *event, AppState *appstate);
+void Motion_set_state(SDL_Keycode key, SDL_Keymod modState, AppState *appstate);
+void Motion_event_handler(SDL_Keycode key, AppState *appstate);
+void Reset_motion_state(AppState *appsate);
+void Motion_state_event_handler(SDL_Keycode key, AppState *appstate);
+void Motion_non_state_event_handler(SDL_Keycode key, AppState *appstate);
+void Paste_tile_contents(AppState *appstate);
 #endif

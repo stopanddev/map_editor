@@ -9,8 +9,8 @@
 #define XGRID_OFFSET 0
 #define YGRID_OFFSET 0
 
-void init_camera(Camera *camera, int width, int height);
-void draw_grid(SDL_Renderer *renderer, AppState *appstate);
-void handle_camera_input(AppState *appstate, SDL_Keycode key);
+void Init_camera(Camera *camera, int width, int height);
+void Draw_grid(SDL_Renderer *renderer, AppState *appstate);
+void Handle_camera_input(AppState *appstate, SDL_Keycode key);
 
 #endif

@@ -24,11 +24,20 @@ SDL_AppResult Init(AppState *state, int argc, char *argv[]) {
   state->prevMouseButton = 0;
 
   // Initialize the logical grid
-  for (int r = 0; r < MAP_HEIGHT; r++) {
-    for (int c = 0; c < MAP_WIDTH; c++) {
-      state->grid[r][c].textureId = 0;
-      state->grid[r][c].collidable = 0;
+  for (int c = 0; c < MAP_WIDTH; c++) {
+    for (int r = 0; r < MAP_HEIGHT; r++) {
+      state->grid[c][r].textureLoc.buffX = 0;
+      state->grid[c][r].textureLoc.buffY = 0;
+      state->grid[c][r].textureLoc.validTexture = false;
+      state->grid[c][r].collidable = 0;
     }
   }
+  Init_motion_state(state);
   return SDL_APP_CONTINUE;
+}
+
+void Init_motion_state(AppState *appstate) {
+  appstate->motionState.ctrl_w = false;
+  appstate->motionState.yank = false;
+  appstate->motionState.modified = false;
 }

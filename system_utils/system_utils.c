@@ -22,8 +22,8 @@ void LoadMap(AppState *appstate) {
                  "\"x\": %d, \"y\": %d, \"textureId\": %d, \"collidable\": %d",
                  &tx, &ty, &textureId, &collidable) == 4) {
         if (tx >= 0 && tx < GAME_WIDTH && ty >= 0 && ty < GAME_HEIGHT) {
-          appstate->grid[tx][ty].textureId = textureId;
-          appstate->grid[tx][ty].collidable = collidable;
+          // appstate->grid[tx][ty].textureId = textureId;
+          // appstate->grid[tx][ty].collidable = collidable;
         }
       }
       ptr++; // advance to avoid infinite loop
@@ -44,7 +44,7 @@ void SaveMap(AppState *appstate) {
     for (int c = 0; c < GAME_WIDTH - 40; c++) { // only map, skip menu
       Tile t = appstate->grid[r][c];
       fprintf(f, "{\"x\":%d, \"y\":%d, \"textureId\":%d, \"collidable\":%d}", r,
-              c, t.textureId, t.collidable);
+              c, t.textureLoc.buffX, t.collidable);
       if (c < (GAME_WIDTH - 41))
         fprintf(f, ",");
     }
