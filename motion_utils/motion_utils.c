@@ -10,9 +10,6 @@ void Init_motion_cursor(MotionCursor *motionCursor) {
   motionCursor->gridy = 0;
   motionCursor->panelx = 0;
   motionCursor->panely = 0;
-  // Tile Buffer
-  motionCursor->tileBuffer.buffX = 0;
-  motionCursor->tileBuffer.buffY = 0;
 }
 
 void Draw_motion_mode_handler(SDL_Renderer *renderer, AppState *appstate) {

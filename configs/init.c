@@ -39,5 +39,8 @@ SDL_AppResult Init(AppState *state, int argc, char *argv[]) {
 void Init_motion_state(AppState *appstate) {
   appstate->motionState.ctrl_w = false;
   appstate->motionState.yank = false;
+  appstate->motionState.pasting = false;
   appstate->motionState.modified = false;
+  appstate->motionState.count = 0;
+  appstate->motionState.direction = NONE;
 }

@@ -16,7 +16,7 @@
 #include <SDL3/SDL_main.h>
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
-  freopen("log.txt", "w", stdout);
+  // freopen("log.txt", "w", stdout);
   AppState *state = SDL_calloc(1, sizeof(AppState));
   if (!state) {
     return SDL_APP_FAILURE;

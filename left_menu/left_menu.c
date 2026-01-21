@@ -21,11 +21,11 @@ void Handle_left_panel_camera_input(AppState *appstate, SDL_Keycode key) {
           fmax(0, fmin(appstate->cameraPanel.x += 1, MENU_WIDTH));
     }
     if (modState == SDL_KMOD_LCTRL && key == SDLK_K) {
-      appstate->camera.y =
+      appstate->cameraPanel.y =
           fmax(0, fmin(appstate->cameraPanel.y -= 1, GAME_HEIGHT));
     }
     if (modState == SDL_KMOD_LCTRL && key == SDLK_J) {
-      appstate->camera.y =
+      appstate->cameraPanel.y =
           fmax(0, fmin(appstate->cameraPanel.y += 1, GAME_HEIGHT));
     }
   }

@@ -4,7 +4,7 @@
 #include <SDL3/SDL_stdinc.h>
 
 void Init_camera(Camera *camera, int width, int height) {
-  camera->x = MENU_WIDTH;
+  camera->x = MENU_WIDTH / 32;
   camera->y = 0;
   camera->width = width;
   camera->height = height;
@@ -14,17 +14,17 @@ void Init_camera(Camera *camera, int width, int height) {
 void Handle_camera_input(AppState *appstate, SDL_Keycode key) {
   SDL_Keymod modState = SDL_GetModState();
   if (!appstate->motionCursor.mode) {
-    if (modState & SDL_KMOD_CTRL && key == SDLK_LEFT) {
-      appstate->camera.x -= TILE_PIXEL;
+    if (modState == SDL_KMOD_LCTRL && key == SDLK_H) {
+      appstate->camera.x -= 1;
     }
-    if (modState & SDL_KMOD_CTRL && key == SDLK_RIGHT) {
-      appstate->camera.x += TILE_PIXEL;
+    if (modState == SDL_KMOD_LCTRL && key == SDLK_L) {
+      appstate->camera.x += 1;
     }
-    if (modState & SDL_KMOD_CTRL && key == SDLK_UP) {
-      appstate->camera.y -= TILE_PIXEL;
+    if (modState == SDL_KMOD_LCTRL && key == SDLK_K) {
+      appstate->camera.y -= 1;
     }
-    if (modState & SDL_KMOD_CTRL && key == SDLK_DOWN) {
-      appstate->camera.y += TILE_PIXEL;
+    if (modState == SDL_KMOD_LCTRL && key == SDLK_J) {
+      appstate->camera.y += 1;
     }
   }
 }
@@ -36,8 +36,8 @@ void Draw_grid(SDL_Renderer *renderer, AppState *appstate) {
     for (int c = 0; c < MAP_WIDTH; c++) {
       float x = SDL_floor(MENU_WIDTH + (c * TILE_PIXEL) + (c * GAP));
       SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-      int camModx = (appstate->camera.x - 224) + x;
-      int camMody = (appstate->camera.y) + y;
+      int camModx = ((appstate->camera.x * TILE_PIXEL) - 224) + x;
+      int camMody = (appstate->camera.y * TILE_PIXEL) + y;
       if (as->grid[c][r].textureLoc.validTexture == true) {
         SDL_FRect src = {(as->grid[c][r].textureLoc.buffX) * 32,
                          (as->grid[c][r].textureLoc.buffY) * 32, 32, 32};

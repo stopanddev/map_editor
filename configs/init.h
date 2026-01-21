@@ -17,6 +17,7 @@
 #define GAP 1.0f
 #define MAP_WIDTH 25
 #define MAP_HEIGHT 23
+#define MAX_TILE_BUFFER (MAP_WIDTH * MAP_HEIGHT)
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
 
@@ -28,6 +29,7 @@ typedef struct Camera {
 typedef struct {
   int buffX, buffY;
   bool validTexture;
+  int tileCount;
 } TileBuffer;
 
 typedef struct {
@@ -38,13 +40,18 @@ typedef struct {
 typedef struct MotionCursor {
   int x, y, gridx, gridy, panelx, panely;
   bool mode;
-  TileBuffer tileBuffer;
+  TileBuffer tileBuffer[MAX_TILE_BUFFER];
 } MotionCursor;
+
+typedef enum { DIR_UP, DIR_RIGHT, DIR_DOWN, DIR_LEFT, NONE } Direction;
 
 typedef struct MotionState {
   bool modified;
   bool ctrl_w;
   bool yank;
+  bool pasting;
+  Direction direction;
+  int count;
 } MotionState;
 
 typedef struct TileMapTexture {
